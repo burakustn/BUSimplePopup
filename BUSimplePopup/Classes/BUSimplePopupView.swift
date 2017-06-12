@@ -21,6 +21,10 @@ public class BUSimplePopupView: UIView, UIGestureRecognizerDelegate {
     public var isDisplayed: Bool = false
     
     public var Popup: BUSimplePopup
+    
+    /**
+     *  Initialize the Popup
+    */
     init(Popup: BUSimplePopup, PopupManager : BUSimplePopupManager){
         self.Popup = Popup
         self.PopupManager = PopupManager
@@ -97,10 +101,18 @@ public class BUSimplePopupView: UIView, UIGestureRecognizerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    /**
+     *  Dismiss Popup
+    */
     public func dismissWithCompletion(_ completion: BUSimplePopupCompletionBlock?) -> Bool {
         return PopupManager.dismissPopupView(PopupView: self, dismissAnimationCompletion: completion)
     }
     
+    
+    /**
+     *  Get the height of Label
+    */
     private func heightForLabel(text:String, font:UIFont, width:CGFloat) -> CGFloat{
     let label:UILabel = UILabel(frame: CGRect.init(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
     label.numberOfLines = 0
@@ -112,6 +124,9 @@ public class BUSimplePopupView: UIView, UIGestureRecognizerDelegate {
     return label.frame.height
     }
     
+    /**
+     *  Get the height of Popup
+     */
     private func heightforPopup() -> CGFloat{
         let padding:CGFloat = kLNRPopupViewMinimumPadding
         var height:CGFloat = padding
